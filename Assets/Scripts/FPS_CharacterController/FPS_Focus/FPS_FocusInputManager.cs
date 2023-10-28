@@ -23,14 +23,15 @@ namespace FPS_Controller
         public FPS_FocusInteract FocusInteract;
         public FPS_FocusMouse FocusMouseLook;
         public FPS_FocusAxisInteract FocusAxisInteract;
+        public FPS_Manager FPS_Man;
 
         [Header("Controls")]
         public bool isFocusActive = false;
         public bool isInputGamepad;
         public bool isKinematic = false;
         // Private
-        InputActionsManager controls;
-        InputActionsManager.FocusActions FocusActions;
+        InputMap controls;
+        InputMap.FocusActions FocusActions;
         Vector2 InteractAxisInput;
         Vector2 MouseInput;
         private string lastInput = "";
@@ -46,6 +47,7 @@ namespace FPS_Controller
             FocusMouseLook = gameObject.GetComponent<FPS_FocusMouse>();
             FocusInteract = gameObject.GetComponent<FPS_FocusInteract>();
             FocusAxisInteract = gameObject.GetComponent<FPS_FocusAxisInteract>();
+            FPS_Man = gameObject.GetComponent<FPS_Manager>();
             // Debug
             if (FocusMouseLook == null)
                 Debug.Log(" ERR# : No Focus Mouse Look Component found on " + gameObject.name + " !");
@@ -53,8 +55,10 @@ namespace FPS_Controller
                 Debug.Log(" ERR# : No Focus Axis Interact Component found on " + gameObject.name + " !");
             if (FocusInteract == null)
                 Debug.Log(" ERR# : No Focus Interact at Reach Component found on " + gameObject.name + " !");
+            if (FPS_Man == null)
+                Debug.Log(" ERR# : No FPS MANAGER at Reach Component found on " + gameObject.name + " !");
             // Int the Input System
-            controls = new InputActionsManager();
+            controls = new InputMap();
             FocusActions = controls.Focus;
             playerCamera = FocusMouseLook.playerCamera.gameObject;
             // Init the input listeners

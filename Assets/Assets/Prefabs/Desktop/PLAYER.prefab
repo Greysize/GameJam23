@@ -343,7 +343,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812332037246004736}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &812332037246004739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,6 +542,7 @@ GameObject:
   - component: {fileID: 812332038885374447}
   - component: {fileID: 812332038885374444}
   - component: {fileID: 6236414298573320278}
+  - component: {fileID: 8431330709811704683}
   m_Layer: 28
   m_Name: PLAYER
   m_TagString: Player
@@ -605,13 +606,12 @@ MonoBehaviour:
   CanJump: 1
   CanInteract: 1
   CanInteractUI: 1
-  CanInteractDistance: 1
-  CanInteractDiapo: 1
   CanCancel: 0
   ForceCameraAngle: 0
   movements: {fileID: 812332038885374435}
   mouseLook: {fileID: 812332038885374432}
   interact: {fileID: 812332038885374445}
+  FPS_Man: {fileID: 0}
   isInputGamepad: 0
   isKinematic: 0
   isPosed: 0
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812332038885374436}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bd6461572363864dbb271bb9c83ba0e, type: 3}
   m_Name: 
@@ -640,6 +640,7 @@ MonoBehaviour:
   FocusInteract: {fileID: 812332038885374447}
   FocusMouseLook: {fileID: 812332038885374446}
   FocusAxisInteract: {fileID: 812332038885374444}
+  FPS_Man: {fileID: 0}
   isFocusActive: 0
   isInputGamepad: 0
   isKinematic: 0
@@ -741,7 +742,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812332038885374436}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cdd47964b07c4c7498cdb1501d849a4b, type: 3}
   m_Name: 
@@ -766,7 +767,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812332038885374436}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea1c58d0305a46647bd99d435a37292b, type: 3}
   m_Name: 
@@ -811,5 +812,168 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf2f811f8d9f8649b393e84c2ff2d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Playerindex: 0
+  isPlayerCamera: 0
   PlayerCamera: {fileID: 812332037246004736}
+--- !u!114 &8431330709811704683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812332038885374436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: c07e3a9fbbe65dd4daf427b66ca074c8,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 812332038885374434}
+        m_TargetAssemblyTypeName: FPS_Controller.FPS_InputManager, Assembly-CSharp
+        m_MethodName: OnMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d6a5053c-34f4-413b-b3f6-e14da26ee3a7
+    m_ActionName: Movements/Movements
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0b1dfc3b-fd9d-4001-9b74-7f74e222520a
+    m_ActionName: Movements/Jump[/XInputControllerWindows/buttonWest,/XInputControllerWindows1/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 812332038885374434}
+        m_TargetAssemblyTypeName: FPS_Controller.FPS_InputManager, Assembly-CSharp
+        m_MethodName: OnMouseInputX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f045b3fc-1184-4ad1-a2b8-3af6c5ff4f27
+    m_ActionName: Movements/MouseX[/XInputControllerWindows/rightStick/x,/XInputControllerWindows1/rightStick/x]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 812332038885374434}
+        m_TargetAssemblyTypeName: FPS_Controller.FPS_InputManager, Assembly-CSharp
+        m_MethodName: OnMouseInputY
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6d034623-ad8c-4da1-b037-a65608f48032
+    m_ActionName: Movements/MouseY[/XInputControllerWindows/rightStick/y,/XInputControllerWindows1/rightStick/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ab9eeb96-f6c0-4f35-80db-d390757934ee
+    m_ActionName: Movements/Interact[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 65b8f94e-7b6d-4ce2-a4d9-4822adf20764
+    m_ActionName: Movements/Cancel[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b4849dbf-7341-4202-bb22-23b8ddfdabc0
+    m_ActionName: Movements/MovementsX[/XInputControllerWindows/leftStick/x,/XInputControllerWindows1/leftStick/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1dd8c8d9-2f89-4325-a6fa-d8baebd83e53
+    m_ActionName: Movements/MovementsY[/XInputControllerWindows/leftStick/y,/XInputControllerWindows1/leftStick/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f3951639-47c3-42b2-a9c9-d8a21eed2049
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows1/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows1/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows1/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows1/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows1/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows1/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows1/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows1/rightStick/right,/XInputControllerWindows/dpad,/XInputControllerWindows1/dpad]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 37c6ceb1-0f1a-4c6e-81f6-58b1f17b1ae5
+    m_ActionName: UI/Submit[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e3688da9-2f9e-46c1-be87-a5c6d10df45c
+    m_ActionName: UI/Cancel[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8ece18a2-ef22-4d88-8092-94dd8205f539
+    m_ActionName: UI/Point
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ffbe31f9-0971-42bf-b491-d93f269b4d42
+    m_ActionName: UI/Click
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f506e8d8-7118-464d-9a10-14b1c685cc32
+    m_ActionName: UI/ScrollWheel
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: caad568d-a8e8-489f-9de7-50ac120f04ef
+    m_ActionName: UI/MiddleClick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 877b06f4-5455-4e40-9903-3172191f2f51
+    m_ActionName: UI/RightClick
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cbd12823-8ee2-431c-9f97-776bde3924cf
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 38bc122f-fcd2-4f02-b886-a6f929f468db
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4e4c8c60-e05c-4591-b549-b965f956095b
+    m_ActionName: Focus/Interact[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: be84e4b0-f39b-4874-b4e0-1e65512408f5
+    m_ActionName: Focus/Cancel[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 78f71350-3fe9-438f-979d-ef5dd112e54f
+    m_ActionName: Focus/MouseX[/XInputControllerWindows/leftStick/x,/XInputControllerWindows1/leftStick/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 38b315ef-4d62-4e58-86b4-68e26fce55f5
+    m_ActionName: Focus/MouseY[/XInputControllerWindows/leftStick/y,/XInputControllerWindows1/leftStick/y]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 340c37c7-318c-4f48-b489-bb97aad81891
+    m_ActionName: Focus/AxisInteract[/XInputControllerWindows/rightStick/up,/XInputControllerWindows1/rightStick/up,/XInputControllerWindows/rightStick/down,/XInputControllerWindows1/rightStick/down,/XInputControllerWindows/rightStick/left,/XInputControllerWindows1/rightStick/left,/XInputControllerWindows/rightStick/right,/XInputControllerWindows1/rightStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8f53ce4e-1054-4f50-ab78-e78b7c7f9f8e
+    m_ActionName: General/Fullscreen[/XInputControllerWindows/select,/XInputControllerWindows1/select]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Movements
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

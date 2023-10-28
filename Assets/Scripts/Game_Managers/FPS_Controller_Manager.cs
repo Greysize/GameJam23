@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FPS_Controller_Manager : MonoBehaviour
 {
@@ -15,23 +16,48 @@ public class FPS_Controller_Manager : MonoBehaviour
 
     private FPS_Manager PlayerAController;
     private FPS_Manager PlayerBController;
+    private PlayerInputManager InputMan;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        OnCreatePlayers();
+        InputMan = gameObject.GetComponent<PlayerInputManager>();
+        DetectPlayersConnected();
     }
+
+    public void DetectPlayersConnected()
+    {
+        if(InputSystem.devices.Count >=2)
+        {
+            OnCreatePlayers();
+        }
+        else
+        {
+            Debug.LogError("Only" + InputSystem.devices.Count + "player foumd : ");
+        }
+    }
+
 
     public void OnCreatePlayers()
     {
         if (PlayerPrefab != null)
         {
-            PlayerA = Instantiate(PlayerPrefab);
+            
+            //PlayerA = Instantiate(PlayerPrefab, PlayerAPoint.transform.position, PlayerAPoint.transform.rotation);
+
+            PlayerA = PlayerInput.Instantiate(PlayerPrefab, controlScheme: "GamePad", pairWithDevice: Gamepad.all[0]).gameObject;
+            PlayerA.transform.position = PlayerAPoint.transform.position;
+            PlayerA.transform.rotation = PlayerAPoint.transform.rotation;
             PlayerAController = PlayerA.GetComponent<FPS_Manager>();
+            //PlayerB = Instantiate(PlayerPrefab, PlayerBPoint.transform.position, PlayerBPoint.transform.rotation);
 
-            PlayerB = Instantiate(PlayerPrefab);
+            PlayerB = PlayerInput.Instantiate(PlayerPrefab, controlScheme: "Keyboard", pairWithDevice: Gamepad.all[1]).gameObject;
+            PlayerB.transform.position = PlayerBPoint.transform.position;
+            PlayerB.transform.rotation = PlayerBPoint.transform.rotation;
             PlayerBController = PlayerB.GetComponent<FPS_Manager>();
-
             UpdatePlayerRole(LeaderCameraIndex);
         }
         else

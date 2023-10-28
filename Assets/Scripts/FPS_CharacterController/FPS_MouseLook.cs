@@ -88,6 +88,7 @@ namespace FPS_Controller
             }
         }
 
+
         public void ReceiveInput(Vector2 mouseInput, bool isGamepad)
         {
             if (isGamepad)

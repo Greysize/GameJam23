@@ -62,10 +62,8 @@ namespace FPS_Controller
             bool J = FPS_Manager.CanJump;
             bool I = FPS_Manager.CanInteract;
             bool C = FPS_Manager.CanCancel;
-            bool D = FPS_Manager.CanInteractDiapo;
-            bool ID = FPS_Manager.CanInteractDistance;
             // change Player values
-            UpdatePlayerModule(M, L, NL, J, I, C, D, ID);
+            UpdatePlayerModule(M, L, NL, J, I, C);
         }
 
         public void Deactivate()
@@ -84,16 +82,12 @@ namespace FPS_Controller
                 FPS_Manager.CanLook = O_Look;
             if (SwapNarrowLook)
                 FPS_Manager.CanNarrowLook = O_Narrow_Look;
-            if (SwapInteractDiapo)
-                FPS_Manager.CanInteractDiapo = O_Interact_Diapo;
-            if (SwapInteractDistance)
-                FPS_Manager.CanInteractDistance = O_Interact_Distance;
             FPS_Manager.UpdateControls();
             FPS_Manager.isKinematic = false;
         }
 
 
-        private void UpdatePlayerModule(bool M, bool L, bool NL, bool J, bool I, bool C, bool D, bool ID)
+        private void UpdatePlayerModule(bool M, bool L, bool NL, bool J, bool I, bool C)
         {
             // INVERT
             if (SwapIntercat)
@@ -108,10 +102,6 @@ namespace FPS_Controller
                 L = !L;
             if (SwapNarrowLook)
                 NL = !NL;
-            if (SwapInteractDiapo)
-                D = !D;
-            if (SwapInteractDistance)
-                ID = !ID;
             //ENABLE
             if (ToggleONInteract)
                 I = true;
@@ -125,10 +115,6 @@ namespace FPS_Controller
                 L = true;
             if (ToggleONNarrowLook)
                 NL = true;
-            if (ToggleONInteractDiapo)
-                D = true;
-            if (ToggleONInteractDistance)
-                ID = true;
             //DISABLE
             if (ToggleOFFInteract)
                 I = false;
@@ -142,12 +128,8 @@ namespace FPS_Controller
                 L = false;
             if (ToggleOFFNarrowLook)
                 NL = false;
-            if (ToggleOFFInteractDiapo)
-                D = false;
-            if (ToggleOFFInteractDistance)
-                ID = false;
             // update listenrer
-            FPS_Manager.ChangeControls(M, L, J, NL, I, C, D, ID);
+            FPS_Manager.ChangeControls(M, L, J, NL, I, C);
         }
         private void RecordPlayerModules()
         {
@@ -157,8 +139,6 @@ namespace FPS_Controller
             O_Movements = FPS_Manager.CanMove;
             O_Look = FPS_Manager.CanLook;
             O_Narrow_Look = FPS_Manager.CanNarrowLook;
-            O_Interact_Diapo = FPS_Manager.CanInteractDiapo;
-            O_Interact_Distance = FPS_Manager.CanInteractDistance;
             //if (TakeOverCamera)
             //{
             //    O_Cam_FOV = Camera.GetComponent<Camera>().fieldOfView;

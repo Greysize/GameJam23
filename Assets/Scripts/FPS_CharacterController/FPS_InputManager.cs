@@ -17,8 +17,6 @@ namespace FPS_Controller
         public bool CanJump = true;
         public bool CanInteract = true;
         public bool CanInteractUI = true;
-        public bool CanInteractDistance = true; // FBI only
-        public bool CanInteractDiapo = true; // FBI Only
         public bool CanCancel = false;
         public bool ForceCameraAngle = false;
         [Header("Modules")]
@@ -26,15 +24,15 @@ namespace FPS_Controller
         public FPS_Movements movements;
         public FPS_MouseLook mouseLook;
         public FPS_Interact interact;
-    
+        public FPS_Manager FPS_Man;
 
         [Header("Controls")]
         public bool isInputGamepad;
         public bool isKinematic;
         public bool isPosed;
         // Private
-        InputActionsManager controls;
-        InputActionsManager.Movement_DesktopActions MovementsActions;
+        InputMap controls;
+        InputMap.MovementsActions MovementsActions;
         Vector2 MovementInput;
         Vector2 MovementKeyboardInput;
         Vector2 MouseInput;
@@ -47,6 +45,7 @@ namespace FPS_Controller
             movements = gameObject.GetComponent<FPS_Movements>();
             mouseLook = gameObject.GetComponent<FPS_MouseLook>();
             interact = gameObject.GetComponent<FPS_Interact>();
+            FPS_Man = gameObject.GetComponent<FPS_Manager>();
             //FocusInputMan = gameObject.GetComponent<FPS_FocusInputManager>();
             // Debug
             if (movements == null)
@@ -55,15 +54,15 @@ namespace FPS_Controller
                 Debug.Log(" ERR# : No Mouse Look Component found on " + gameObject.name + " !");
             if (interact == null)
                 Debug.Log(" ERR# : No Interact at Reach Component found on " + gameObject.name + " !");
+            if (FPS_Man == null)
+                Debug.Log(" ERR# : No FPS Manager Component found on " + gameObject.name + " !");
             // Int the Input System
-            controls = new InputActionsManager();
-            MovementsActions = controls.Movement_Desktop;
-
+            //controls = new InputMap();
+            //MovementsActions = controls.Movements;
             // Init the input listeners
-            CreateControlListener();
+            //CreateControlListener();   PLAYERINPUT MANAGE THAT NOW
             UpdateControls();
         }
-
 
 
         private void Update()
@@ -92,29 +91,48 @@ namespace FPS_Controller
             }
         }
 
-        public void CreateControlListener()
+        public void OnMovement(InputAction.CallbackContext ctx)
         {
-            // Movements
-            MovementsActions.Movements.performed += ctx => MovementKeyboardInput = ctx.ReadValue<Vector2>();
-            // fix
-            MovementsActions.MovementsX.performed += ctx => MovementInput.x = ctx.ReadValue<float>();
-            MovementsActions.MovementsY.performed += ctx => MovementInput.y = ctx.ReadValue<float>();
-            // Mouse Look
-            MovementsActions.MouseX.performed += ctx => MouseInput.x = ctx.ReadValue<float>();
-            MovementsActions.MouseY.performed += ctx => MouseInput.y = ctx.ReadValue<float>();
-            // Jump]
-            MovementsActions.Jump.performed += _ => movements.OnJumpPressed();
-            // Interact
-            MovementsActions.Interact.performed += _ => interact.OnInteractPressed();
-            // Interact Diapo Controls
-            MovementsActions.DiapoForward.performed += _ => interact.OnInteractPressed(true, true);
-            MovementsActions.DiapoBackward.performed += _ => interact.OnInteractPressed(true, false);
-            // Cancel
-            MovementsActions.Cancel.performed += _ => interact.OnCancelPressed();
-            // device control detection
-            MovementsActions.Get().actionTriggered += ctx => lastDevice = ctx.control?.device;
-            // rebinding
+            print("move");
+            MovementInput = ctx.ReadValue<Vector2>();
         }
+
+        public void OnMouseInputX(InputAction.CallbackContext ctx)
+        {
+            MouseInput.x = ctx.ReadValue<float>();
+        }
+
+        public void OnMouseInputY(InputAction.CallbackContext ctx)
+        {
+            MouseInput.y = ctx.ReadValue<float>();
+        }
+
+        public void OnJump()
+        {
+        }
+
+       /* public void CreateControlListener()
+        {
+                // Movements
+                MovementsActions.Movements.performed += ctx => MovementKeyboardInput = ctx.ReadValue<Vector2>();
+                // fix
+                MovementsActions.MovementsX.performed += ctx => MovementInput.x = ctx.ReadValue<float>();
+                MovementsActions.MovementsY.performed += ctx => MovementInput.y = ctx.ReadValue<float>();
+                // Mouse Look
+                MovementsActions.MouseX.performed += ctx => MouseInput.x = ctx.ReadValue<float>();
+                MovementsActions.MouseY.performed += ctx => MouseInput.y = ctx.ReadValue<float>();
+                // Jump]
+                MovementsActions.Jump.performed += _ => movements.OnJumpPressed();
+                // Interact
+                MovementsActions.Interact.performed += _ => interact.OnInteractPressed();
+                // Cancel
+                MovementsActions.Cancel.performed += _ => interact.OnCancelPressed();
+                // device control detection
+                MovementsActions.Get().actionTriggered += ctx => lastDevice = ctx.control?.device;
+                // rebinding
+           
+        }*/
+
 
         public void UpdateControls()
         {
@@ -124,12 +142,10 @@ namespace FPS_Controller
             movements.CanJump = CanJump;
             interact.CanInteract = CanInteract;
             interact.CanInteractUI = CanInteractUI;
-            interact.CanInteractDiapo = CanInteractDiapo;
-            interact.ChangeInteractDistance(CanInteractDistance);
             interact.CanCancel = CanCancel;
         }
 
-        public void ChangeControls(bool M, bool L, bool J, bool NL, bool I, bool C, bool D, bool ID)
+        public void ChangeControls(bool M, bool L, bool J, bool NL, bool I, bool C)
         {
             CanLook = L;
             CanMove = M;
@@ -137,8 +153,6 @@ namespace FPS_Controller
             CanInteract = I;
             CanCancel = C;
             CanNarrowLook = NL;
-            CanInteractDiapo = D;
-            CanInteractDistance = ID;
             UpdateControls();
         }
 
@@ -159,12 +173,12 @@ namespace FPS_Controller
 
         private void OnEnable()
         {
-            controls.Enable();
+                controls.Enable();
         }
 
         private void OnDisable()
         {
-            controls.Disable();
+                controls.Disable();
         }
 
         public void TeleportAtLocation(Vector3 position, Quaternion rotation)
