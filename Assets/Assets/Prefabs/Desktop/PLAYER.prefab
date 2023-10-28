@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 812332038885374446}
   - component: {fileID: 812332038885374447}
   - component: {fileID: 812332038885374444}
-  - component: {fileID: 966429671}
+  - component: {fileID: 6236414298573320278}
   m_Layer: 28
   m_Name: PLAYER
   m_TagString: Player
@@ -799,7 +799,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   AxisInput: {x: 0, y: 0}
---- !u!114 &966429671
+--- !u!114 &6236414298573320278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -808,15 +808,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 812332038885374436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d630a1d753c3124c86d8a4d49301b62, type: 3}
+  m_Script: {fileID: 11500000, guid: bbf2f811f8d9f8649b393e84c2ff2d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  XRCamera: {fileID: 812332037218229489}
-  XRHandLeft: {fileID: 0}
-  XRHandRight: {fileID: 0}
-  XRCamPos: {x: 3, y: 2, z: 1}
-  XRCamRot: {x: 0, y: 0, z: 0, w: 0}
-  XRHandLPos: {x: 0, y: 0, z: 0}
-  XRHandLRot: {x: 0, y: 0, z: 0, w: 0}
-  XRHandRPos: {x: 0, y: 0, z: 0}
-  XRHandRRot: {x: 0, y: 0, z: 0, w: 0}
+  Playerindex: 0
+  PlayerCamera: {fileID: 812332037246004736}
