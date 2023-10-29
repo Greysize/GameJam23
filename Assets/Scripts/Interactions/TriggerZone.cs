@@ -1,7 +1,9 @@
+using Invector.vCharacterController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
 
 public class TriggerZone : MonoBehaviour
 {
@@ -11,35 +13,38 @@ public class TriggerZone : MonoBehaviour
     public bool isBothPlayerRequired = false;
     public bool isOneUseOnly = false;
     public UnityEvent TriggerEvent;
+    private int NumPlayerPassed = 0;
+    private Level_Manager LvlMan;
 
-
-    private BoxCollider Trigger;
-    private int NumPlayerPassed;
     private void Start()
     {
-        Trigger = gameObject.GetComponent<BoxCollider>();
+        LvlMan = FindObjectOfType<Level_Manager>();
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player" && isEnabled && isPlayerActionnable)
         {
-            if (!isBothPlayerRequired)
+            if (other.GetComponent<vThirdPersonInput>() != null)
             {
-                TriggerEvent.Invoke();
-                if (isOneUseOnly)
-                    isEnabled = false;
-            }
-            else
-            {
-                NumPlayerPassed += 1;
-                if (NumPlayerPassed >= 2)
+                if (!isBothPlayerRequired)
                 {
+                    LvlMan.LastTriggerRole = other.GetComponent<vThirdPersonInput>().role;
                     TriggerEvent.Invoke();
-                    if (!isOneUseOnly)
-                        NumPlayerPassed = 0;
-                    else
+                    if (isOneUseOnly)
                         isEnabled = false;
+                }
+                else
+                {
+                    NumPlayerPassed += 1;
+                    if (NumPlayerPassed >= 2)
+                    {
+                        LvlMan.LastTriggerRole = other.GetComponent<vThirdPersonInput>().role;
+                        TriggerEvent.Invoke();
+                        if (!isOneUseOnly)
+                            NumPlayerPassed = 0;
+                        else
+                            isEnabled = false;
+                    }
                 }
             }
         }

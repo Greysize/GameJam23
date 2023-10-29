@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806be2c34de432645b389debf311cffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnType: Action
+  SpawnType: Actionman
   DisplayColor: {r: 0, g: 0.07410216, b: 1, a: 1}
   DisplaySize: 0.5
