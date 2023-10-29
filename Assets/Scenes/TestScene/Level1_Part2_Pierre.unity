@@ -17295,6 +17295,70 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1114139381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114139383}
+  - component: {fileID: 1114139382}
+  m_Layer: 0
+  m_Name: RESET
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1114139382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114139381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af160523c56401498ca82a14ba5375c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scenesToLoad:
+  - m_sceneAsset2:
+      m_Handle: 0
+    m_sceneAsset: {fileID: 102900000, guid: 23bad83ff460e9b449cc17a42690f7e6, type: 3}
+    m_sceneName: Death
+  m_previousScenes: []
+  m_scenesToUnload:
+  - m_sceneAsset2:
+      m_Handle: 0
+    m_sceneAsset: {fileID: 102900000, guid: 3522b5aeded880f4580223934340d412, type: 3}
+    m_sceneName: Level1_part1_Jeremi
+  sceneIndexToBeActive: 0
+  activeSceneManually: 0
+  SceneChangeWait: 0.3
+  OnSceneChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSceneChangedFinished:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1114139383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114139381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1123351693
 GameObject:
   m_ObjectHideFlags: 0
@@ -19509,7 +19573,19 @@ MonoBehaviour:
   isOneUseOnly: 0
   TriggerEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1114139382}
+        m_TargetAssemblyTypeName: SceneTriggerManager, Assembly-CSharp
+        m_MethodName: TriggerChangeScenes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   CancelTrigger:
     m_PersistentCalls:
       m_Calls: []
@@ -31816,7 +31892,7 @@ Transform:
   - {fileID: 577266190}
   - {fileID: 314638142}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2139685958
 PrefabInstance:
