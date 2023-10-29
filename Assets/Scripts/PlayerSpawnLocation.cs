@@ -5,9 +5,10 @@ using UnityEditor;
 
 public class PlayerSpawnLocation : MonoBehaviour
 {
+    [Header("Type : Camera or Action")]
+    public string SpawnType = "Camera";
     public Color DisplayColor;
     public float DisplaySize = 0.5f;
-
 
 
     private void OnDrawGizmos()
