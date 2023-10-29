@@ -321,7 +321,7 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1 &682725983
+--- !u!1 &584369264
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,36 +329,56 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 682725985}
-  - component: {fileID: 682725984}
+  - component: {fileID: 584369266}
+  - component: {fileID: 584369265}
   m_Layer: 0
-  m_Name: InputDetector
+  m_Name: InputDetection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &682725984
+--- !u!114 &584369265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682725983}
+  m_GameObject: {fileID: 584369264}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4f518e189c3df949a8720dd29b72ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &682725985
+  launchGame:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1593984218}
+        m_TargetAssemblyTypeName: SceneTriggerManager, Assembly-CSharp
+        m_MethodName: TriggerChangeScenes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  cameraManJoystick: 
+  actionManJoystick: 
+  cameramanRegistered: 0
+  actionmanRegistered: 0
+  joystickManager: {fileID: 0}
+--- !u!4 &584369266
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 682725983}
+  m_GameObject: {fileID: 584369264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 643.77625, y: -40.4924, z: -206.8606}
+  m_LocalPosition: {x: -0.19500083, y: 1.726547, z: 1.4101696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -647,4 +667,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1593984216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1593984219}
+  - component: {fileID: 1593984218}
+  m_Layer: 0
+  m_Name: LOADER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1593984218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593984216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af160523c56401498ca82a14ba5375c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scenesToLoad:
+  - m_sceneAsset2:
+      m_Handle: 0
+    m_sceneAsset: {fileID: 102900000, guid: 496380d9ac1f6724daf7455be3dea022, type: 3}
+    m_sceneName: Level_01
+  m_previousScenes: []
+  m_scenesToUnload:
+  - m_sceneAsset2:
+      m_Handle: 0
+    m_sceneAsset: {fileID: 102900000, guid: 480aaeb7675499e4fb491122e9a1b112, type: 3}
+    m_sceneName: MainMenu
+  sceneIndexToBeActive: 0
+  activeSceneManually: 0
+  SceneChangeWait: 0.3
+  OnSceneChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSceneChangedFinished:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1593984219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593984216}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

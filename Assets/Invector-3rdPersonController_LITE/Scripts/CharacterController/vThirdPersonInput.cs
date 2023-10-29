@@ -4,7 +4,11 @@ namespace Invector.vCharacterController
 {
     public class vThirdPersonInput : MonoBehaviour
     {
-        #region Variables       
+        #region Variables   
+        public string role;
+        public string joystickNumber;
+
+        JoystickManager joystickManager;
 
         [Header("Controller Input")]
         public string horizontalInput = "Horizontal";
@@ -25,6 +29,10 @@ namespace Invector.vCharacterController
 
         protected virtual void Start()
         {
+            joystickManager = FindObjectOfType<JoystickManager>();
+            if (role.CompareTo("Cameraman") == 0) joystickNumber = joystickManager.cameraManJoystick;
+            if (role.CompareTo("Actionman") == 0) joystickNumber = joystickManager.actionManJoystick;
+
             InitilizeController();
             InitializeTpCamera();
         }
@@ -64,7 +72,7 @@ namespace Invector.vCharacterController
                 tpCamera = FindObjectOfType<vThirdPersonCamera>();
                 if (tpCamera == null)
                     return;
-                if (tpCamera)
+                if (tpCamera && role.CompareTo("Cameraman") == 0)
                 {
                     tpCamera.SetMainTarget(this.transform);
                     tpCamera.Init();
@@ -83,8 +91,8 @@ namespace Invector.vCharacterController
 
         public virtual void MoveInput()
         {
-            cc.input.x = Input.GetAxis(horizontalInput);
-            cc.input.z = Input.GetAxis(verticallInput);
+            cc.input.x = Input.GetAxis(horizontalInput + joystickNumber);
+            cc.input.z = Input.GetAxis(verticallInput + joystickNumber);
         }
 
         protected virtual void CameraInput()
@@ -106,11 +114,14 @@ namespace Invector.vCharacterController
 
             if (tpCamera == null)
                 return;
+            if (role == "Cameraman")
+            {
+                var Y = Input.GetAxis(rotateCameraYInput + joystickNumber);
+                var X = Input.GetAxis(rotateCameraXInput + joystickNumber);
 
-            var Y = Input.GetAxis(rotateCameraYInput);
-            var X = Input.GetAxis(rotateCameraXInput);
+                tpCamera.RotateCamera(X, Y);
+            }
 
-            tpCamera.RotateCamera(X, Y);
         }
 
         protected virtual void StrafeInput()

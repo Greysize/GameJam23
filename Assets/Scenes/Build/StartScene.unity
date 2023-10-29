@@ -215,6 +215,52 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1485674369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485674371}
+  - component: {fileID: 1485674370}
+  m_Layer: 0
+  m_Name: JOYSTICKMANAGER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1485674370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485674369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31adeb9cdd884c44b9875d1f17d621af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraManJoystick: 
+  actionManJoystick: 
+--- !u!4 &1485674371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485674369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4691173, y: 0.6533358, z: -0.254781}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1783579326
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +293,7 @@ MonoBehaviour:
   lastLoadedSceneIsActive: 1
   objectsToMoveToActiveScene:
   - {fileID: 1783579326}
+  - {fileID: 1485674369}
   PlayerGo: {fileID: 0}
   SphereFader: {fileID: 0}
 --- !u!4 &1783579328
