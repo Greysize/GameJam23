@@ -13,6 +13,7 @@ public class TriggerZone : MonoBehaviour
     public bool isBothPlayerRequired = false;
     public bool isOneUseOnly = false;
     public UnityEvent TriggerEvent;
+    public UnityEvent CancelTrigger;
     private int NumPlayerPassed = 0;
     private Level_Manager LvlMan;
 
@@ -65,6 +66,10 @@ public class TriggerZone : MonoBehaviour
                 {
                     NumPlayerPassed = 0;
                 }
+            }
+            else
+            {
+                CancelTrigger.Invoke();
             }
         }
     }
