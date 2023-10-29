@@ -224,4 +224,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1edbb1a28ad92b64e8582e9f4ac0e919, type: 3}
   - {fileID: 8300000, guid: 6bd55bcbd18b3754080a1ee843c4aa9c, type: 3}
   - {fileID: 8300000, guid: 1f2c0522a38546241bb9cbdfd63506e2, type: 3}
+  - {fileID: 8300000, guid: c743ba95fccd0024fb637ee9800e068e, type: 3}
+  - {fileID: 8300000, guid: 2d95311a8a7d3e14081a487fc5b09603, type: 3}
   FootASound: {fileID: 5217352412825781435}
