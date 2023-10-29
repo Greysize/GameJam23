@@ -207,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 2605587686017533892, guid: 5e854472797c8bd46a7798f24c9be078,
         type: 3}
       propertyPath: joystickNumber
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4420188118694927361, guid: 5e854472797c8bd46a7798f24c9be078,
         type: 3}
