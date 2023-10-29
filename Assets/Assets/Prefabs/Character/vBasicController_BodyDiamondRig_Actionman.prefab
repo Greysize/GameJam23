@@ -27633,6 +27633,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Footstep_generator
       objectReference: {fileID: 0}
+    - target: {fileID: 3715772062942186156, guid: 2eb11d85bcbec0248b40ff6d8c3f93fc,
+        type: 3}
+      propertyPath: m_Size.x
+      value: -0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6685750279124549286, guid: 2eb11d85bcbec0248b40ff6d8c3f93fc,
         type: 3}
       propertyPath: m_RootOrder

@@ -20,4 +20,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Build/Death.unity
     guid: 23bad83ff460e9b449cc17a42690f7e6
+  - enabled: 1
+    path: Assets/Scenes/Build/Level.unity
+    guid: 7801064aaa62567489679ed12aac9f33
+  - enabled: 1
+    path: Assets/Scenes/Scene_Nico/Decors1.unity
+    guid: c83f04d128a34b440a163ddcbfade4c6
+  - enabled: 1
+    path: Assets/Scenes/Scene_Nico/Decors1_Nico.unity
+    guid: c65de4bd56e70e54a83ad2fc64c22ad3
+  - enabled: 1
+    path: Assets/Scenes/Scene_Nico/Decors1_Nico_2.unity
+    guid: 67ea186431bd66346aa453c4ae38709e
+  - enabled: 1
+    path: Assets/Scenes/TestScene/Level1_Part3_Nico.unity
+    guid: 79aaefcd904b67449ba373da97214e2a
+  - enabled: 1
+    path: Assets/Scenes/TestScene/Level1_Part2_Pierre.unity
+    guid: 39d2429e3afcdc84bb2785e30ca40391
+  - enabled: 1
+    path: Assets/Scenes/TestScene/Level1_part1_Jeremi_TEMP.unity
+    guid: d6d72d6fffa004246a1683af93b9b07c
+  - enabled: 1
+    path: Assets/Scenes/TestScene/Level1_part1_Jeremi.unity
+    guid: 3522b5aeded880f4580223934340d412
+  - enabled: 1
+    path: Assets/Scenes/TestScene/TestScene_David.unity
+    guid: 7c128c557bd42e84285f91d788f7e11f
   m_configObjects: {}
