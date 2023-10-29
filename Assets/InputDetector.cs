@@ -18,7 +18,7 @@ public class InputDetector : MonoBehaviour
 
     public bool cameramanRegistered = false;
     public bool actionmanRegistered = false;
-    public bool triggerA = false;
+    public bool triggerOneByOne = false;
     public bool triggerB = false;
 
     Coroutine COTriggerBuffer;
@@ -33,7 +33,7 @@ public class InputDetector : MonoBehaviour
 
     void Update()
     {
-        triggerA = false;
+        triggerOneByOne = false;
         joysticks = Input.GetJoystickNames();
         if (joysticks.Length != joysticksCount)
         {
@@ -47,19 +47,41 @@ public class InputDetector : MonoBehaviour
             if (Input.GetKeyDown(key))
             {
                 if (!cameramanRegistered && !actionmanRegistered)
-                print(key.ToString());
-                triggerA = true;
-                if (COTriggerBuffer != null) COTriggerBuffer = StartCoroutine(TriggerBuffer());
-
-                string targetString = key.ToString();
-                string compareString = key.ToString().Remove(8);
-                if (compareString.CompareTo("Joystick") == 0)
                 {
-                    cameraManJoystick = targetString.Remove(9);
-                    cameraManJoystick = cameraManJoystick.Substring(8);
-                    joystickManager.UpdateCameraMan(cameraManJoystick);
-                    print("Gamepad registered = " + cameraManJoystick);
-                    /*                    text.text = "ACTIONMAN PRESS A BUTTON";*/
+                    print(key.ToString());
+
+                    string targetString = key.ToString();
+                    string compareString = key.ToString().Remove(8);
+                    if (compareString.CompareTo("Joystick") == 0)
+                    {
+                        triggerOneByOne = true;
+                        if (COTriggerBuffer == null) COTriggerBuffer = StartCoroutine(TriggerBuffer());
+                        cameraManJoystick = targetString.Remove(9);
+                        cameraManJoystick = cameraManJoystick.Substring(8);
+                        joystickManager.UpdateCameraMan(cameraManJoystick);
+                        print("Gamepad registered = " + cameraManJoystick);
+
+                        /*                    text.text = "ACTIONMAN PRESS A BUTTON";*/
+                    }
+                }
+
+                else if (cameramanRegistered && !actionmanRegistered)
+                {
+                    print(key.ToString());
+
+                    string targetString = key.ToString();
+                    string compareString = key.ToString().Remove(8);
+                    if (compareString.CompareTo("Joystick") == 0)
+                    {
+                        triggerOneByOne = true;
+                        if (COTriggerBuffer == null) COTriggerBuffer = StartCoroutine(TriggerBuffer());
+                        actionManJoystick = targetString.Remove(9);
+                        actionManJoystick = actionManJoystick.Substring(8);
+                        joystickManager.UpdateActionMan(actionManJoystick);
+                        print("Gamepad registered = " + actionManJoystick);
+
+                        /*                    text.text = "ACTIONMAN PRESS A BUTTON";*/
+                    }
                 }
             }
         }
@@ -81,9 +103,20 @@ public class InputDetector : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
-        cameramanRegistered = true;
-        print("cameramanRegistered");
-        triggerA = false;
+
+        if (!cameramanRegistered && !actionmanRegistered)
+        {
+            cameramanRegistered = true;
+            print("cameramanRegistered");
+        }
+        else if (cameramanRegistered && !actionmanRegistered)
+        {
+            actionmanRegistered = true;
+            print("actionmanRegistered");
+        }
+        COTriggerBuffer = null;
+
+/*            triggerOneByOne = false;*/
         yield return null;
     }
 }
