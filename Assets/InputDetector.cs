@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class InputDetector : MonoBehaviour
 {
     public UnityEvent launchGame;
+    public GameObject textLegacy;
+    Text text;
 
     string[] joysticks;
     int joysticksCount = 0;
@@ -15,18 +18,22 @@ public class InputDetector : MonoBehaviour
 
     public bool cameramanRegistered = false;
     public bool actionmanRegistered = false;
-    bool triggerOnce = false;
+    public bool triggerA = false;
+    public bool triggerB = false;
+
+    Coroutine COTriggerBuffer;
 
     public JoystickManager joystickManager;
 
     private void Start()
     {
         joystickManager = FindObjectOfType<JoystickManager>();
+        text = textLegacy.GetComponent<Text>();
     }
 
     void Update()
     {
-        triggerOnce = false;
+        triggerA = false;
         joysticks = Input.GetJoystickNames();
         if (joysticks.Length != joysticksCount)
         {
@@ -35,57 +42,46 @@ public class InputDetector : MonoBehaviour
         }
 
 
-
-        if (!cameramanRegistered && !actionmanRegistered && !triggerOnce)
+        foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
         {
-            triggerOnce = true;
-            foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
+            if (Input.GetKeyDown(key))
             {
-                if (Input.GetKeyDown(key))
+                print(key.ToString());
+                triggerA = true;
+                if (COTriggerBuffer != null) COTriggerBuffer = StartCoroutine(TriggerBuffer());
+
+                string targetString = key.ToString();
+                string compareString = key.ToString().Remove(8);
+                if (compareString.CompareTo("Joystick") == 0)
                 {
-                    string targetString = key.ToString();
-                    string compareString = key.ToString().Remove(8);
-                    if (compareString.CompareTo("Joystick") == 0)
-                    {
-                        cameramanRegistered = true;
-                        cameraManJoystick = targetString.Remove(9);
-                        cameraManJoystick = cameraManJoystick.Substring(8);
-                        joystickManager.UpdateCameraMan(cameraManJoystick);
-                        Debug.Log($"Gamepad number {cameraManJoystick} Pressed");
-                    }
+                    cameraManJoystick = targetString.Remove(9);
+                    cameraManJoystick = cameraManJoystick.Substring(8);
+                    joystickManager.UpdateCameraMan(cameraManJoystick);
+                    print("Gamepad registered = " + cameraManJoystick);
+                    /*                    text.text = "ACTIONMAN PRESS A BUTTON";*/
                 }
             }
         }
 
-        if (cameramanRegistered && !actionmanRegistered && !triggerOnce)
-        {
-            triggerOnce = true;
-            foreach (KeyCode key in Enum.GetValues(typeof(KeyCode)))
-            {
-                if (Input.GetKeyDown(key))
-                {
-                    string targetString = key.ToString();
-                    string compareString = key.ToString().Remove(8);
-                    if (compareString.CompareTo("Joystick") == 0)
-                    {
-                        actionmanRegistered = true;
-                        actionManJoystick = targetString.Remove(9);
-                        actionManJoystick = actionManJoystick.Substring(8);
-                        if (actionManJoystick != cameraManJoystick)
-                        {
-                            joystickManager.UpdateActionMan(actionManJoystick);
-                            Debug.Log($"Gamepad number {actionManJoystick} Pressed");
-                        }
 
-                    }
-                }
-            }
-        }
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             print("launch game");
             launchGame.Invoke();
         }
+    }
+
+    IEnumerator TriggerBuffer()
+    {
+        float time = 0;
+        while (time < 0.5)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+        cameramanRegistered = true;
+        triggerA = false;
+        yield return null;
     }
 }

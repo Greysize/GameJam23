@@ -155,7 +155,7 @@ namespace Invector.vCharacterController
         /// </summary>
         protected virtual void JumpInput()
         {
-            if (Input.GetKeyDown(jumpInput) && JumpConditions())
+            if (Input.GetButtonDown("Jump" + joystickNumber) && JumpConditions())
                 cc.Jump();
         }
 
