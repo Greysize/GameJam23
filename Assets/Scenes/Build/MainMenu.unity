@@ -370,6 +370,8 @@ MonoBehaviour:
   actionManJoystick: 
   cameramanRegistered: 0
   actionmanRegistered: 0
+  triggerOneByOne: 0
+  triggerB: 0
   joystickManager: {fileID: 0}
 --- !u!4 &584369266
 Transform:
@@ -701,8 +703,8 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_sceneAsset2:
       m_Handle: 0
-    m_sceneAsset: {fileID: 102900000, guid: 496380d9ac1f6724daf7455be3dea022, type: 3}
-    m_sceneName: Level_01
+    m_sceneAsset: {fileID: 102900000, guid: 35f0cf05ec731f542b1f327cb99a7878, type: 3}
+    m_sceneName: TestScene_David_2
   m_previousScenes: []
   m_scenesToUnload:
   - m_sceneAsset2:

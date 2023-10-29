@@ -12,6 +12,8 @@ public class Level_Manager : MonoBehaviour
     [Header("Players")]
     public GameObject PlayerAction;
     public GameObject PlayerCamera;
+    [Header("Camera")]
+    public GameObject Camera;
     [Header("SpwanPoints")]
     public GameObject SpawnAction;
     public GameObject SpawnCamera;
@@ -79,6 +81,9 @@ public class Level_Manager : MonoBehaviour
     }
     public void OnResetLevel()
     {
+        Destroy(Camera);
+        Destroy(PlayerAction);
+        Destroy(PlayerCamera);
         ResetLevel.Invoke();
     }
 }
