@@ -9,6 +9,8 @@ public class InputDetector : MonoBehaviour
 {
     public UnityEvent launchGame;
     public GameObject textLegacy;
+    public GameObject checkMark1;
+    public GameObject checkMark2;
     Text text;
 
     string[] joysticks;
@@ -60,8 +62,8 @@ public class InputDetector : MonoBehaviour
                         cameraManJoystick = cameraManJoystick.Substring(8);
                         joystickManager.UpdateCameraMan(cameraManJoystick);
                         print("Gamepad registered = " + cameraManJoystick);
-
-                        /*                    text.text = "ACTIONMAN PRESS A BUTTON";*/
+                        checkMark1.SetActive(true);
+                        text.text = "ACTION MAN PRESS A";
                     }
                 }
 
@@ -73,14 +75,21 @@ public class InputDetector : MonoBehaviour
                     string compareString = key.ToString().Remove(8);
                     if (compareString.CompareTo("Joystick") == 0)
                     {
-                        triggerOneByOne = true;
-                        if (COTriggerBuffer == null) COTriggerBuffer = StartCoroutine(TriggerBuffer());
                         actionManJoystick = targetString.Remove(9);
                         actionManJoystick = actionManJoystick.Substring(8);
-                        joystickManager.UpdateActionMan(actionManJoystick);
-                        print("Gamepad registered = " + actionManJoystick);
+                        print("cameraman = " + cameraManJoystick + "actionman = " + actionManJoystick);
 
-                        /*                    text.text = "ACTIONMAN PRESS A BUTTON";*/
+                        bool o = actionManJoystick.CompareTo(cameraManJoystick) == 0;
+                        print(o);
+                        if (o == false && actionManJoystick.CompareTo("B") != 0)
+                        {
+                            triggerOneByOne = true;
+                            if (COTriggerBuffer == null) COTriggerBuffer = StartCoroutine(TriggerBuffer());
+                            joystickManager.UpdateActionMan(actionManJoystick);
+                            print("Gamepad registered = " + actionManJoystick);
+                            checkMark2.SetActive(true);
+                            text.text = "PRESS SPACEBAR TO CONTINUE";
+                        }
                     }
                 }
             }
