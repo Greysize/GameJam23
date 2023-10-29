@@ -46,6 +46,7 @@ public class InputDetector : MonoBehaviour
         {
             if (Input.GetKeyDown(key))
             {
+                if (!cameramanRegistered && !actionmanRegistered)
                 print(key.ToString());
                 triggerA = true;
                 if (COTriggerBuffer != null) COTriggerBuffer = StartCoroutine(TriggerBuffer());
@@ -81,6 +82,7 @@ public class InputDetector : MonoBehaviour
             yield return null;
         }
         cameramanRegistered = true;
+        print("cameramanRegistered");
         triggerA = false;
         yield return null;
     }

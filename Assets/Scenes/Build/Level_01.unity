@@ -956,9 +956,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   role: Cameraman
-  joystickNumber: 0
-  horizontalInput: KeyboardX
-  verticallInput: KeyboardY
+  joystickNumber: 1
+  horizontalInput: Horizontal
+  verticallInput: Vertical
   jumpInput: 32
   strafeInput: 9
   sprintInput: 304
