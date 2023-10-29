@@ -12,6 +12,7 @@ public class TriggerZone : MonoBehaviour
     public bool isOneUseOnly = false;
     public UnityEvent TriggerEvent;
 
+
     private BoxCollider Trigger;
     private int NumPlayerPassed;
     private void Start()

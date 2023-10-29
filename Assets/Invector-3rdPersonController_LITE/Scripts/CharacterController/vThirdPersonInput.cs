@@ -30,8 +30,11 @@ namespace Invector.vCharacterController
         protected virtual void Start()
         {
             joystickManager = FindObjectOfType<JoystickManager>();
-            if (role.CompareTo("Cameraman") == 0) joystickNumber = joystickManager.cameraManJoystick;
-            if (role.CompareTo("Actionman") == 0) joystickNumber = joystickManager.actionManJoystick;
+            if (joystickManager != null)
+            {
+                if (role.CompareTo("Cameraman") == 0) joystickNumber = joystickManager.cameraManJoystick;
+                if (role.CompareTo("Actionman") == 0) joystickNumber = joystickManager.actionManJoystick;
+            }
 
             InitilizeController();
             InitializeTpCamera();

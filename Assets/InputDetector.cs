@@ -31,7 +31,7 @@ public class InputDetector : MonoBehaviour
         if (joysticks.Length != joysticksCount)
         {
             joysticksCount = joysticks.Length;
-            Debug.LogError($"Joysticks updated, Count {joysticksCount}");
+            Debug.Log($"Joysticks updated, Count {joysticksCount}");
         }
 
 
@@ -51,7 +51,7 @@ public class InputDetector : MonoBehaviour
                         cameraManJoystick = targetString.Remove(9);
                         cameraManJoystick = cameraManJoystick.Substring(8);
                         joystickManager.UpdateCameraMan(cameraManJoystick);
-                        Debug.LogError($"Gamepad number {cameraManJoystick} Pressed");
+                        Debug.Log($"Gamepad number {cameraManJoystick} Pressed");
                     }
                 }
             }
@@ -74,7 +74,7 @@ public class InputDetector : MonoBehaviour
                         if (actionManJoystick != cameraManJoystick)
                         {
                             joystickManager.UpdateActionMan(actionManJoystick);
-                            Debug.LogError($"Gamepad number {actionManJoystick} Pressed");
+                            Debug.Log($"Gamepad number {actionManJoystick} Pressed");
                         }
 
                     }
