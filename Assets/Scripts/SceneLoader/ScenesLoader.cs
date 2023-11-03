@@ -14,11 +14,10 @@ public class ScenesLoader : MonoBehaviour
         SceneManager.LoadScene("Level1_part1_Jeremi", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level1_part2_Pierre", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level1_part3_Nico", LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(thisScene);
-        StartCoroutine(ForceActiveScene());
+/*        StartCoroutine(ForceActiveScene());*/
     }
 
-    private IEnumerator ForceActiveScene()
+/*    private IEnumerator ForceActiveScene()
     {
         yield return new WaitForSeconds(0.3f);
         print("force activeScene");
@@ -29,7 +28,7 @@ public class ScenesLoader : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            SceneManager.SetActiveScene (thisScene);
+            SceneManager.SetActiveScene(thisScene);
         }
-    }
+    }*/
 }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class InputDetector : MonoBehaviour
@@ -13,6 +15,8 @@ public class InputDetector : MonoBehaviour
     public GameObject checkMark2;
     Text text;
 
+    Fader fader;
+
     string[] joysticks;
     int joysticksCount = 0;
     public string cameraManJoystick;
@@ -20,10 +24,12 @@ public class InputDetector : MonoBehaviour
 
     public bool cameramanRegistered = false;
     public bool actionmanRegistered = false;
-    public bool triggerOneByOne = false;
+    public bool preventDouble = false;
     public bool triggerB = false;
+    public float loopOnlyTwo = 0;
 
     Coroutine COTriggerBuffer;
+    Coroutine COStartGame;
 
     public JoystickManager joystickManager;
 
@@ -31,11 +37,11 @@ public class InputDetector : MonoBehaviour
     {
         joystickManager = FindObjectOfType<JoystickManager>();
         text = textLegacy.GetComponent<Text>();
+        fader = FindObjectOfType<Fader>();
     }
 
     void Update()
     {
-        triggerOneByOne = false;
         joysticks = Input.GetJoystickNames();
         if (joysticks.Length != joysticksCount)
         {
@@ -48,7 +54,7 @@ public class InputDetector : MonoBehaviour
         {
             if (Input.GetKeyDown(key))
             {
-                if (!cameramanRegistered && !actionmanRegistered)
+                if (!cameramanRegistered && !actionmanRegistered && loopOnlyTwo < 2)
                 {
                     print(key.ToString());
 
@@ -56,18 +62,19 @@ public class InputDetector : MonoBehaviour
                     string compareString = key.ToString().Remove(8);
                     if (compareString.CompareTo("Joystick") == 0)
                     {
-                        triggerOneByOne = true;
+                        preventDouble = true;
                         if (COTriggerBuffer == null) COTriggerBuffer = StartCoroutine(TriggerBuffer());
                         cameraManJoystick = targetString.Remove(9);
                         cameraManJoystick = cameraManJoystick.Substring(8);
                         joystickManager.UpdateCameraMan(cameraManJoystick);
                         print("Gamepad registered = " + cameraManJoystick);
                         checkMark1.SetActive(true);
+                        loopOnlyTwo++;
                         text.text = "ACTION MAN PRESS A";
                     }
                 }
 
-                else if (cameramanRegistered && !actionmanRegistered)
+                else if (cameramanRegistered && !actionmanRegistered && !preventDouble)
                 {
                     print(key.ToString());
 
@@ -78,17 +85,19 @@ public class InputDetector : MonoBehaviour
                         actionManJoystick = targetString.Remove(9);
                         actionManJoystick = actionManJoystick.Substring(8);
                         print("cameraman = " + cameraManJoystick + "actionman = " + actionManJoystick);
-
                         bool o = actionManJoystick.CompareTo(cameraManJoystick) == 0;
                         print(o);
                         if (o == false && actionManJoystick.CompareTo("B") != 0)
                         {
-                            triggerOneByOne = true;
+                            preventDouble = true;
                             if (COTriggerBuffer == null) COTriggerBuffer = StartCoroutine(TriggerBuffer());
                             joystickManager.UpdateActionMan(actionManJoystick);
                             print("Gamepad registered = " + actionManJoystick);
                             checkMark2.SetActive(true);
-                            text.text = "PRESS SPACEBAR TO CONTINUE";
+                            text.text = "GAME WILL START";
+                            FindObjectOfType<SceneManagement>().lastLoadedSceneIsActive = false;
+                            StartCoroutine(GameObject.FindObjectOfType<Fader>().FadeAndLoadScene(Fader.FadeDirection.In));
+                            
                         }
                     }
                 }
@@ -96,18 +105,18 @@ public class InputDetector : MonoBehaviour
         }
 
 
-
+/*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             print("launch game");
             launchGame.Invoke();
-        }
+        }*/
     }
 
     IEnumerator TriggerBuffer()
     {
         float time = 0;
-        while (time < 0.5)
+        while (time < 0.1)
         {
             time += Time.deltaTime;
             yield return null;
@@ -124,8 +133,19 @@ public class InputDetector : MonoBehaviour
             print("actionmanRegistered");
         }
         COTriggerBuffer = null;
-
-/*            triggerOneByOne = false;*/
+        preventDouble = false;
         yield return null;
     }
+
+/*    IEnumerator StartGame()
+    {
+        float time = 0;
+        while (time < 2)
+        {
+            time += Time.deltaTime;
+            yield return null;
+        }
+        launchGame.Invoke();
+
+    }*/
 }

@@ -14,7 +14,7 @@ public class SceneManagement : MonoBehaviour
     private int countScenesToLoad;
     [Header("Set last loaded scene as active")]
     [Tooltip("Should last loaded scene be active?")]
-    [SerializeField] bool lastLoadedSceneIsActive;
+    [SerializeField] public bool lastLoadedSceneIsActive;
 
     [Header("Persistent Objects")]
     [Tooltip("These objects will be moved to the current active scene")]
