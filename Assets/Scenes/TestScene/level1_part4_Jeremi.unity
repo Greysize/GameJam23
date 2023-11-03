@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shape_Small_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b08902e303660841aa0244d71ffb388,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b08902e303660841aa0244d71ffb388, type: 3}
 --- !u!1 &60958163 stripped
@@ -913,7 +918,7 @@ GameObject:
   - component: {fileID: 157357102}
   - component: {fileID: 157357101}
   - component: {fileID: 157357100}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1257,7 +1262,7 @@ GameObject:
   - component: {fileID: 209613376}
   - component: {fileID: 209613375}
   - component: {fileID: 209613374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2220,7 +2225,7 @@ GameObject:
   - component: {fileID: 373689382}
   - component: {fileID: 373689381}
   - component: {fileID: 373689380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11990,6 +11995,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shape_Small_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b08902e303660841aa0244d71ffb388,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b08902e303660841aa0244d71ffb388, type: 3}
 --- !u!1 &613812717 stripped
@@ -12077,6 +12087,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shape_Small_01 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b08902e303660841aa0244d71ffb388,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b08902e303660841aa0244d71ffb388, type: 3}
@@ -12610,6 +12625,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shape_Small_01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b08902e303660841aa0244d71ffb388,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b08902e303660841aa0244d71ffb388, type: 3}
 --- !u!1 &964447590 stripped
@@ -12801,7 +12821,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1115886
+  m_Name: pb_Mesh351350
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16878,7 +16898,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1115980
+  m_Name: pb_Mesh351454
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17550,7 +17570,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1115858
+  m_Name: pb_Mesh351310
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17926,7 +17946,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1115844
+  m_Name: pb_Mesh351296
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18514,7 +18534,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh1115872
+  m_Name: pb_Mesh351324
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21900,6 +21920,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shape_Small_01 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b08902e303660841aa0244d71ffb388,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b08902e303660841aa0244d71ffb388, type: 3}
 --- !u!1 &2064356104 stripped
@@ -22213,6 +22238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shape_Small_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3b08902e303660841aa0244d71ffb388,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b08902e303660841aa0244d71ffb388, type: 3}
