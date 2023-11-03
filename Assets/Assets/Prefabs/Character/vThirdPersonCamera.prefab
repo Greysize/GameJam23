@@ -108,8 +108,8 @@ MonoBehaviour:
   defaultDistance: 0
   height: 1.7
   smoothFollow: 10
-  xMouseSensitivity: 9
-  yMouseSensitivity: 9
+  xMouseSensitivity: 4
+  yMouseSensitivity: 4
   yMinLimit: -40
   yMaxLimit: 80
   indexList: 0

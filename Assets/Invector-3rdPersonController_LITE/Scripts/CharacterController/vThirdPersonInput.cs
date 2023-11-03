@@ -29,6 +29,7 @@ namespace Invector.vCharacterController
 
         protected virtual void Start()
         {
+            print("INITIALIZE INPUT MANAGER INVECTOR");
             joystickManager = FindObjectOfType<JoystickManager>();
             if (joystickManager != null)
             {
