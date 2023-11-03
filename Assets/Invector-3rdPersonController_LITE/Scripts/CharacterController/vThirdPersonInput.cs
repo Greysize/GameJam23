@@ -125,7 +125,7 @@ namespace Invector.vCharacterController
                 var X = Input.GetAxis(rotateCameraXInput + joystickNumber);
                 debugX = X; debugY = Y;
 
-                tpCamera.RotateCamera(X>0.01||X<-0.01?X:0, Y>0.01||Y<-0.01?Y:0);
+                tpCamera.RotateCamera(X>0.015||X<-0.015?X:0, Y>0.015||Y<-0.015?Y:0);
             }
 
         }
