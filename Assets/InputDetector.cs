@@ -95,7 +95,8 @@ public class InputDetector : MonoBehaviour
                             print("Gamepad registered = " + actionManJoystick);
                             checkMark2.SetActive(true);
                             text.text = "GAME WILL START";
-                            FindObjectOfType<SceneManagement>().lastLoadedSceneIsActive = false;
+/*                            FindObjectOfType<SceneManagement>().lastLoadedSceneIsActive = false;*/
+
                             StartCoroutine(GameObject.FindObjectOfType<Fader>().FadeAndLoadScene(Fader.FadeDirection.In));
                             
                         }

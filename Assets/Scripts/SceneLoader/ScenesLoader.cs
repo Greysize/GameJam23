@@ -14,6 +14,7 @@ public class ScenesLoader : MonoBehaviour
         SceneManager.LoadScene("Level1_part1_Jeremi", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level1_part2_Pierre", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level1_part3_Nico", LoadSceneMode.Additive);
+        FindObjectOfType<SceneManagement>().SetActiveSceneManually(thisScene);
 /*        StartCoroutine(ForceActiveScene());*/
     }
 

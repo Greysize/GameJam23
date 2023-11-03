@@ -7,8 +7,6 @@ namespace Invector.vCharacterController
         #region Variables   
         public string role;
         public string joystickNumber;
-        public float debugX;
-        public float debugY;
 
         JoystickManager joystickManager;
 
@@ -123,7 +121,6 @@ namespace Invector.vCharacterController
             {
                 var Y = Input.GetAxis(rotateCameraYInput + joystickNumber);
                 var X = Input.GetAxis(rotateCameraXInput + joystickNumber);
-                debugX = X; debugY = Y;
 
                 tpCamera.RotateCamera(X>0.015||X<-0.015?X:0, Y>0.015||Y<-0.015?Y:0);
             }
