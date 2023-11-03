@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5583ae1063b36644884586a3bc63a039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastLoadedSceneIsActive: 0
+  lastLoadedSceneIsActive: 1
   objectsToMoveToActiveScene:
   - {fileID: 1783579326}
   - {fileID: 1485674369}
