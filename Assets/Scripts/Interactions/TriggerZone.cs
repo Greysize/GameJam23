@@ -16,9 +16,11 @@ public class TriggerZone : MonoBehaviour
     public UnityEvent CancelTrigger;
     private int NumPlayerPassed = 0;
     private Level_Manager LvlMan;
+    [SerializeField] AudioSource triggerSound;
 
     private void Start()
     {
+        if(triggerSound == null) triggerSound = GameObject.Find("ButtonSound").GetComponent<AudioSource>();
         LvlMan = FindObjectOfType<Level_Manager>();
     }
     private void OnTriggerEnter(Collider other)
@@ -30,7 +32,7 @@ public class TriggerZone : MonoBehaviour
                 if (!isBothPlayerRequired)
                 {
                     LvlMan.LastTriggerRole = other.GetComponent<vThirdPersonInput>().role;
-                    TriggerEvent.Invoke();
+                    TriggerMethod();
                     if (isOneUseOnly)
                         isEnabled = false;
                 }
@@ -40,7 +42,7 @@ public class TriggerZone : MonoBehaviour
                     if (NumPlayerPassed >= 2)
                     {
                         LvlMan.LastTriggerRole = other.GetComponent<vThirdPersonInput>().role;
-                        TriggerEvent.Invoke();
+                        TriggerMethod();
                         if (!isOneUseOnly)
                             NumPlayerPassed = 0;
                         else
@@ -51,7 +53,7 @@ public class TriggerZone : MonoBehaviour
         }
         if(other.tag == "Block" && isEnabled && isBlockActionnable)
         {
-            TriggerEvent.Invoke();
+            TriggerMethod();
         }
     }
 
@@ -74,4 +76,9 @@ public class TriggerZone : MonoBehaviour
         }
     }
 
+    void TriggerMethod()
+    {
+        TriggerEvent.Invoke();
+        triggerSound.Play();
+    }
 }

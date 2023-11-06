@@ -10,7 +10,7 @@ public class ScenesLoader : MonoBehaviour
     void Start()
     {
         thisScene = SceneManager.GetActiveScene();
-        print ("SCENE NAME : " + thisScene.name);
+/*        print ("SCENE NAME : " + thisScene.name);*/
         SceneManager.LoadScene("Level1_part1_Jeremi", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level1_part2_Pierre", LoadSceneMode.Additive);
         SceneManager.LoadScene("Level1_part3_Nico", LoadSceneMode.Additive);

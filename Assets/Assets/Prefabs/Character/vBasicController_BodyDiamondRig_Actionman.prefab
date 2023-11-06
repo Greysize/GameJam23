@@ -4444,7 +4444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   role: Actionman
-  joystickNumber: 
+  joystickNumber: 0
   horizontalInput: Horizontal
   verticallInput: Vertical
   jumpInput: 32

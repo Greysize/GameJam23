@@ -6,9 +6,19 @@ using UnityEngine.Events;
 
 public class AutoLoader : MonoBehaviour
 {
+    public float delay;
     public UnityEvent autoLoad;
     private void Awake()
     {
-       autoLoad.Invoke();
+        StartCoroutine(Delay() );
+    }
+
+    private IEnumerator Delay()
+    {
+
+        yield return new WaitForSeconds(delay);
+        print("load level");
+        autoLoad.Invoke();
+        yield return null;
     }
 }
