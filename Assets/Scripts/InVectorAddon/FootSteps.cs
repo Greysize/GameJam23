@@ -18,7 +18,6 @@ public class FootSteps : MonoBehaviour
 
     private IEnumerator PlayFootStep()
     {
-        print("foot");
         isPlaying = true;
         int index = Random.Range(0, FootstepsSound.Length);
         AudioClip CurAudio = FootstepsSound[index];

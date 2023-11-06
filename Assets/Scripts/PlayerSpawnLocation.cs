@@ -5,13 +5,13 @@ using UnityEditor;
 
 public class PlayerSpawnLocation : MonoBehaviour
 {
-    [Header("Type : Camera or Action")]
+/*    [Header("Type : Camera or Action")]
     public string SpawnType = "Camera";
     public Color DisplayColor;
-    public float DisplaySize = 0.5f;
+    public float DisplaySize = 0.5f;*/
 
 
-    private void OnDrawGizmos()
+/*    private void OnDrawGizmos()
     {
 
         Gizmos.color = DisplayColor;
@@ -23,5 +23,5 @@ public class PlayerSpawnLocation : MonoBehaviour
         Gizmos.DrawSphere(new Vector3(0, 1.4f, gizsize / 2), gizsize / 10);
         //Handles.Label(transform.position, GizText);
             UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
-    }
+    }*/
 }

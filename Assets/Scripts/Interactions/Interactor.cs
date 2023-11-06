@@ -12,6 +12,7 @@ public class Interactor : MonoBehaviour
     public float Raydistance = 2f;
     [SerializeField] string InteractButton = "Fire";
     [SerializeField] vThirdPersonInput myController;
+    [SerializeField] AudioSource buttonSound;
 
    // private Level_Manager LvlMan;
    // private Camera Cam;
@@ -19,8 +20,11 @@ public class Interactor : MonoBehaviour
 
     private void Start()
     {
+        string joynum = null;
         joystickManager = FindObjectOfType<JoystickManager>();
-        var joynum = joystickManager.actionManJoystick;
+        if (joystickManager != null) joynum = joystickManager.actionManJoystick;
+        else joynum = "1";
+
         print("INITIALIZE INTERACTOR");
         InteractButton = "Fire" + joynum;
         print("joynum = " + joynum);
@@ -51,6 +55,7 @@ public class Interactor : MonoBehaviour
         {
             if(hitData.collider.gameObject.GetComponent<Interactable>())
             {
+                buttonSound.Play();
                 hitData.collider.gameObject.GetComponent<Interactable>().OnInteract();
             }
         }
